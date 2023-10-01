@@ -14,12 +14,12 @@ class ListNode():
 class Queue():
   def __init__(self, val=None):
     self.head = ListNode(val)
-    self.tail = self.head    
+    self.tail = self.head
     self.cnode = self.head
-  
+
   def __str__(self):
     return str(self.head)
-  
+
   def is_empty(self):
     return True if self.head.val == None else False
 
@@ -31,7 +31,7 @@ class Queue():
     if self.head.next == None:
       self.head.val = None
     else:
-      self.head = self.head.next      
+      self.head = self.head.next
     return res
 
   def push(self, val=0):
@@ -46,16 +46,19 @@ class Queue():
     new_node = ListNode(val)
     self.tail.next = new_node
     self.tail = self.tail.next
-  
+
   def insert(self, val=0, n=0):
     if not n:
       self.push(val)
       return
+
     new_node = ListNode(val)
     self.cnode = self.head
-    while n-1 > 0 and self.cnode.next:
+
+    while n > 1 and self.cnode.next:
       n -= 1
       self.cnode = self.cnode.next
+
     new_node.next = self.cnode.next
     self.cnode.next = new_node
 
@@ -73,17 +76,18 @@ class Queue():
       self.cnode.next = pnode
       pnode = self.cnode
       self.cnode = nnode
-    
+
     self.head = pnode
 
 if __name__ == "__main__":
   queue = Queue()
   queue.push(1)
-  queue.push(5)  
+  queue.push(5)
   queue.pop()
   queue.insert(3, 1)
-  queue.insert(4, 1)  
-  queue.insert(6, 2)    
+  queue.insert(4, 1)
+  queue.insert(6, 2)
+  print('contents:', queue)
   queue.reverse()
   queue.append(10)
   print('peek val:', queue.peek())
