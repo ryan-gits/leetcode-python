@@ -56,8 +56,8 @@ class Queue():
     self.cnode = self.head
 
     while n > 1 and self.cnode.next:
-      n -= 1
       self.cnode = self.cnode.next
+      n -= 1
 
     new_node.next = self.cnode.next
     self.cnode.next = new_node
